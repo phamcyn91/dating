@@ -4,9 +4,19 @@
    CSS Style Sheet for http://cpham.greenriverdev.com/328/dating/
  */
 
+/* Style for container in home.html */
 .box {
 
     margin-top: 25px;
     padding: 25px;
 
+}
+
+/* Style for the private policy box in personal.html */
+.privacy-box {
+
+    background-color: rgb(240, 240, 240);
+    margin-right: 20px;
+    margin-top: 20px;
+    padding-top: 10px;
 }
