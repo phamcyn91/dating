@@ -2,9 +2,162 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="./styles/styles.css">
+
     <title>Interests</title>
 </head>
 <body>
 
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light border">
+        <a class="navbar-brand text-secondary" href="http://cpham.greenriverdev.com/328/dating">My Dating Website</a>
+    </nav>
+
+    <div class="container border rounded box">
+        <div class="row">
+            <div class="col">
+                <h1>Profile</h1>
+            </div>
+        </div>
+        <hr>
+        <form action="./summary" method="post">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h6><strong>In-door Interests</strong></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="hiking" name="indoor_interests[]" id="tv">
+                                <label class="form-check-label" for="tv">
+                                    tv
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="puzzles" name="puzzles" id="puzzles">
+                                <label class="form-check-label" for="puzzles">
+                                    puzzles
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="movies" name="indoor_interests[]" id="movies">
+                                <label class="form-check-label" for="movies">
+                                    movies
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="reading" name="indoor_interests[]" id="reading">
+                                <label class="form-check-label" for="reading">
+                                    reading
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="cooking" name="indoor_interests[]" id="cooking">
+                                <label class="form-check-label" for="cooking">
+                                    cooking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="playing cards" name="indoor_interests[]" id="playing cards">
+                                <label class="form-check-label" for="playing cards">
+                                    playing cards</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="board games" name="indoor_interests[]" id="board games">
+                                <label class="form-check-label" for="board games">
+                                    board games
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="video games" name="indoor_interests[]" id="video games">
+                                <label class="form-check-label" for="video games">
+                                    video games
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <h6><strong>Out-door Interests</strong></h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="hiking" name="outdoor_interests[]" id="hiking">
+                                <label class="form-check-label" for="hiking">
+                                    hiking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="walking" name="outdoor_interests[]" id="walking">
+                                <label class="form-check-label" for="walking">
+                                    walking
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="biking" name="outdoor_interests[]" id="biking">
+                                <label class="form-check-label" for="biking">
+                                    biking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="climbing" name="outdoor_interests[]" id="climbing">
+                                <label class="form-check-label" for="climbing">
+                                    climbing
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="swimming" name="outdoor_interests[]" id="swimming">
+                                <label class="form-check-label" for="swimming">
+                                    swimming
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="collecting" name="outdoor_interests[]" id="collecting">
+                                <label class="form-check-label" for="collecting">
+                                    collecting
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-right">Next ></button>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
