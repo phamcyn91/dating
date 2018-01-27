@@ -93,9 +93,8 @@
         $f3->set('outdoor', $_SESSION['outdoor']);
         $f3->set('indoor', $_SESSION['indoor']);
 
-        $template = new Template();
-        echo $template->render
-        ('pages/profile_summary.html');
+        //load a template
+        echo Template::instance()->render('pages/profile_summary.html');
     }
     );
 

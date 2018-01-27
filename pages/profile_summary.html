@@ -27,28 +27,28 @@
             <div class="col-6">
                 <div class="container">
                     <div class="col border">
-                        <p>Name: {{ @firstName }} {{ @lastName }}</p>
+                        <p class="font-weight-bold">Name: {{ @firstName }} {{ @lastName }}</>
                     </div>
                     <div class="col border">
-                        <p>Gender: {{ @gender }}</p>
+                        <p class="font-weight-bold">Gender: {{ @gender }}</p>
                     </div>
                     <div class="col border">
-                        <p>Age: {{ @age }}</p>
+                        <p class="font-weight-bold">Age: {{ @age }}</p>
                     </div>
                     <div class="col border">
-                        <p>Phone: {{ @phoneNumber }}</p>
+                        <p class="font-weight-bold">Phone: {{ @phoneNumber }}</p>
                     </div>
                     <div class="col border">
-                        <p>Email: {{ @email }}</p>
+                        <p class="font-weight-bold">Email: {{ @email }}</p>
                     </div>
                     <div class="col border">
-                        <p>State: {{ @state }}</p>
+                        <p class="font-weight-bold">State: {{ @state }}</p>
                     </div>
                     <div class="col border">
-                        <p>Seeking: {{ @seeking }}</p>
+                        <p class="font-weight-bold">Seeking: {{ @seeking }}</p>
                     </div>
                     <div class="col border">
-                        <p>Interests:
+                        <p class="font-weight-bold">Interests:
                             <repeat group="{{ @indoor }}" value ="{{ @interest }}" >
                                 {{ @interest }}
                             </repeat>
@@ -65,7 +65,7 @@
                         <img src="./images/stormtrooper.jpg" class="img-fluid" alt="Stormtrooper" width="320" height="320">
                     </div>
                     <div class="col">
-                        <h4>Biography</h4>
+                        <h3>Biography</h3>
                         <p class="text-center"> {{ @bio }}</p>
                     </div>
                 </div>
