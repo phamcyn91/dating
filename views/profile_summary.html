@@ -33,28 +33,28 @@
             <div class="col-6">
                 <div class="container">
                     <div class="col border">
-                        <p class="font-weight-bold">Name: {{ @firstName }} {{ @lastName }}</>
+                        <p>Name: {{ @firstName }} {{ @lastName }}</>
                     </div>
                     <div class="col border">
-                        <p class="font-weight-bold">Gender: {{ @gender }}</p>
+                        <p>Gender: {{ @gender }}</p>
                     </div>
                     <div class="col border">
-                        <p class="font-weight-bold">Age: {{ @age }}</p>
+                        <p>Age: {{ @age }}</p>
                     </div>
                     <div class="col border">
-                        <p class="font-weight-bold">Phone: {{ @phoneNumber }}</p>
+                        <p>Phone: {{ @phone }}</p>
                     </div>
                     <div class="col border">
-                        <p class="font-weight-bold">Email: {{ @email }}</p>
+                        <p>Email: {{ @email }}</p>
                     </div>
                     <div class="col border">
-                        <p class="font-weight-bold">State: {{ @state }}</p>
+                        <p>State: {{ @state }}</p>
                     </div>
                     <div class="col border">
-                        <p class="font-weight-bold">Seeking: {{ @seeking }}</p>
+                        <p>Seeking: {{ @seeking }}</p>
                     </div>
                     <div class="col border">
-                        <p class="font-weight-bold">Interests:
+                        <p>Interests:
                             <repeat group="{{ @indoor }}" value ="{{ @interest }}" >
                                 {{ @interest }}
                             </repeat>
@@ -81,7 +81,7 @@
         <br>
         <div class="row">
             <div class="col text-center">
-                <form action="#" method="get">
+                <form action="#" method="post">
                     <input class="btn btn-primary btn-lg" type="submit" value="Create a Profile!">
                 </form>
             </div>

@@ -31,7 +31,7 @@
     <div class="container border rounded box">
         <div class="row">
             <div class="col">
-                <h1>Profile</h1>
+                <h1>Interests</h1>
             </div>
         </div>
         <hr>
@@ -99,6 +99,9 @@
                                 </label>
                             </div>
                         </div>
+                        <check if="{{ isset(@interestErrors['outdoor']) }}">
+                            <div class="p-3 mb-2 col-4 bg-danger text-white rounded">{{ @interestErrors['outdoor'] }}</div>
+                        </check>
                     </div>
                  </div>
             </div>
@@ -155,12 +158,16 @@
                                 </label>
                             </div>
                         </div>
+                        <check if="{{ isset(@interestErrors['outdoor']) }}">
+                            <div class="p-3 mb-2 col-4 bg-danger text-white rounded">{{ @interestErrors['outdoor'] }}</div>
+                        </check>
+                        <br>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-right">Next ></button>
+                    <button type="submit" name="interestSubmit" class="btn btn-primary float-right">Next ></button>
                 </div>
             </div>
         </form>

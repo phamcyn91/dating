@@ -21,59 +21,116 @@
     //Set debug level (0-3)
     $f3->set('DEBUG', 3);
 
+    //Set indoor interests array
+    $f3->set('indoors', array('tv', 'puzzles', 'movies', 'reading', 'cooking', 'playing cards', 'board games', 'video games'));
+
+    //Set outdoor interests array
+    $f3->set('outdoors', array('hiking', 'walking', 'biking', 'climbing', 'swimming', 'collecting'));
+
     //Default route to pages/home.html
     $f3->route('GET /', function() {
+
         $view = new View();
         echo $view->render
-        ('pages/home.html');
+        ('views/home.html');
     }
     );
 
     //Defined route to pages/personal.html
-    $f3->route('GET /personal', function() {
-        $view = new View();
-        echo $view->render
-        ('pages/personal.html');
+    $f3->route('GET|POST /personal', function($f3) {
+
+        if (isset($_POST['submit'])) {
+
+            // storing POST values from profile.html to PHP variables
+            $firstName = $_POST['firstName'];
+            $lastName = $_POST['lastName'];
+            $age = $_POST['age'];
+            $phone = $_POST['phone'];
+
+            // validation
+            include('model/validate.php');
+
+            if ($profileSuccess) {
+
+                // storing POST values from personal.html to SESSION variables
+                $_SESSION['firstName'] = $firstName;
+                $_SESSION['lastName'] = $lastName;
+                $_SESSION['age'] = $age;
+                $_SESSION['phone'] = $phone;
+                $_SESSION['gender'] = $_POST['gender'];
+
+
+                $f3->reroute('./profile');
+
+            } else {
+
+                $f3->set('profileErrors', $profileErrors);
+
+                //load a template
+                echo Template::instance()->render('views/personal.html');
+            }
+        } else {
+
+            echo Template::instance()->render('views/personal.html');
+
+        }
     }
     );
 
     //Defined route to pages/profile.html
-    $f3->route('POST /profile', function() {
+    $f3->route('GET /profile', function() {
 
-        // storing POST values from personal.html to SESSION variables
-        $_SESSION['firstName'] = $_POST['firstName'];
-        $_SESSION['lastName'] = $_POST['lastName'];
-        $_SESSION['age'] = $_POST['age'];
-        $_SESSION['gender'] = $_POST['gender'];
-        $_SESSION['phoneNumber'] = $_POST['phoneNumber'];
+        echo Template::instance()->render('views/profile.html');
 
-
-        $view = new View();
-        echo $view->render
-        ('pages/profile.html');
     }
     );
 
 
     //Defined route to pages/interests.html
-    $f3->route('POST /interests', function() {
+    $f3->route('GET|POST /interests', function($f3) {
 
-        // storing POST values from personal.html to SESSION variables
-        $_SESSION['email'] = $_POST['email'];
-        $_SESSION['state'] = $_POST['state'];
-        $_SESSION['seeking'] = $_POST['seeking'];
-        $_SESSION['bio'] = $_POST['bio'];
+        // validation
+        if (isset($_POST['interestSubmit'])) {
 
-        $view = new View();
-        echo $view->render
-        ('pages/interests.html');
+            $outdoor = $_POST['outdoor_interests'];
+            $indoor = $_POST['indoor_interests'];
+
+            include('model/validate.php');
+
+            // validation
+            if ($interestSuccess) {
+
+                // storing POST values from interests.html to SESSION variables
+                $_SESSION['outdoor'] = $outdoor;
+                $_SESSION['indoor'] = $indoor;
+
+                $f3->reroute('./summary');
+
+            } else {
+
+                $f3->set('interestErrors', $interestErrors);
+
+                //load a template
+                echo Template::instance()->render('views/interests.html');
+            }
+        } else {
+
+            // storing POST values from personal.html to SESSION variables
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['state'] = $_POST['state'];
+            $_SESSION['seeking'] = $_POST['seeking'];
+            $_SESSION['bio'] = $_POST['bio'];
+
+            echo Template::instance()->render('views/interests.html');
+
+        }
     }
     );
 
     //Defined route to pages/profile_summary.html
     $f3->route('POST /summary', function($f3) {
 
-        // storing POST values from interests.html to SESSION variables
+        // storing POST values from interests.html to SESSION array variables
         $_SESSION['outdoor'] = $_POST['outdoor_interests'];
         $_SESSION['indoor'] = $_POST['indoor_interests'];
 
@@ -83,7 +140,7 @@
         $f3->set('lastName', $_SESSION['lastName']);
         $f3->set('age', $_SESSION['age']);
         $f3->set('gender', $_SESSION['gender']);
-        $f3->set('phoneNumber', $_SESSION['phoneNumber']);
+        $f3->set('phone', $_SESSION['phone']);
 
         $f3->set('email', $_SESSION['email']);
         $f3->set('state', $_SESSION['state']);
@@ -94,7 +151,7 @@
         $f3->set('indoor', $_SESSION['indoor']);
 
         //load a template
-        echo Template::instance()->render('pages/profile_summary.html');
+        echo Template::instance()->render('views/profile_summary.html');
     }
     );
 
