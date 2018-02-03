@@ -47,6 +47,13 @@
             $age = $_POST['age'];
             $phone = $_POST['phone'];
 
+            // storing POST values in fat-free to make the form sticky
+            $f3->set('firstName', $firstName);
+            $f3->set('lastName', $lastName);
+            $f3->set('age', $age);
+            $f3->set('gender', $_POST['gender']);
+            $f3->set('phone', $phone);
+
             // validation
             include('model/validate.php');
 
@@ -78,7 +85,13 @@
     );
 
     //Defined route to pages/profile.html
-    $f3->route('GET /profile', function() {
+    $f3->route('GET|POST /profile', function($f3) {
+
+        // storing POST values in fat-free to make the form sticky
+        $f3->set('email', $_POST['email']);
+        $f3->set('state', $_POST['state']);
+        $f3->set('seeking', $_POST['seeking']);
+        $f3->set('bio', $_POST['bio']);
 
         echo Template::instance()->render('views/profile.html');
 
@@ -128,7 +141,7 @@
     );
 
     //Defined route to pages/profile_summary.html
-    $f3->route('POST /summary', function($f3) {
+    $f3->route('GET|POST /summary', function($f3) {
 
         // storing POST values from interests.html to SESSION array variables
         $_SESSION['outdoor'] = $_POST['outdoor_interests'];

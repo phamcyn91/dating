@@ -7,8 +7,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -46,13 +44,15 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="tv" name="indoor_interests[]" id="tv">
+                                <input class="form-check-input" type="checkbox" value="tv" name="indoor_interests[]" id="tv"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("tv", $_POST['indoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="tv">
                                     tv
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="puzzles" name="indoor_interests[]" id="puzzles">
+                                <input class="form-check-input" type="checkbox" value="puzzles" name="indoor_interests[]" id="puzzles"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("puzzles", $_POST['indoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="puzzles">
                                     puzzles
                                 </label>
@@ -60,13 +60,15 @@
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="movies" name="indoor_interests[]" id="movies">
+                                <input class="form-check-input" type="checkbox" value="movies" name="indoor_interests[]" id="movies"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("movies", $_POST['indoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="movies">
                                     movies
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="reading" name="indoor_interests[]" id="reading">
+                                <input class="form-check-input" type="checkbox" value="reading" name="indoor_interests[]" id="reading"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("reading", $_POST['indoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="reading">
                                     reading
                                 </label>
@@ -74,27 +76,31 @@
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="cooking" name="indoor_interests[]" id="cooking">
+                                <input class="form-check-input" type="checkbox" value="cooking" name="indoor_interests[]" id="cooking"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("cooking", $_POST['indoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="cooking">
                                     cooking
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="playing cards" name="indoor_interests[]" id="playing cards">
-                                <label class="form-check-label" for="playing cards">
+                                <input class="form-check-input" type="checkbox" value="playing-cards" name="indoor_interests[]" id="playing-cards"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("playing-cards", $_POST['indoor_interests'])) echo 'checked'; ?>>
+                                <label class="form-check-label" for="playing-cards">
                                     playing cards</label>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="board games" name="indoor_interests[]" id="board games">
-                                <label class="form-check-label" for="board games">
+                                <input class="form-check-input" type="checkbox" value="board-games" name="indoor_interests[]" id="board-games"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("board-games", $_POST['indoor_interests'])) echo 'checked'; ?>>
+                                <label class="form-check-label" for="board-games">
                                     board games
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="video games" name="indoor_interests[]" id="video games">
-                                <label class="form-check-label" for="video games">
+                                <input class="form-check-input" type="checkbox" value="video-games" name="indoor_interests[]" id="video-games"
+                                <?php if (!empty($_POST['indoor_interests']) && in_array("video-games", $_POST['indoor_interests'])) echo 'checked'; ?>>
+                                <label class="form-check-label" for="video-games">
                                     video games
                                 </label>
                             </div>
@@ -116,13 +122,15 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="hiking" name="outdoor_interests[]" id="hiking">
+                                <input class="form-check-input" type="checkbox" value="hiking" name="outdoor_interests[]" id="hiking"
+                                <?php if (!empty($_POST['outdoor_interests']) && in_array("hiking", $_POST['outdoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="hiking">
                                     hiking
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="walking" name="outdoor_interests[]" id="walking">
+                                <input class="form-check-input" type="checkbox" value="walking" name="outdoor_interests[]" id="walking"
+                                <?php if (!empty($_POST['outdoor_interests']) && in_array("walking", $_POST['outdoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="walking">
                                     walking
                                 </label>
@@ -130,13 +138,15 @@
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="biking" name="outdoor_interests[]" id="biking">
+                                <input class="form-check-input" type="checkbox" value="biking" name="outdoor_interests[]" id="biking"
+                                <?php if (!empty($_POST['outdoor_interests']) && in_array("biking", $_POST['outdoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="biking">
                                     biking
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="climbing" name="outdoor_interests[]" id="climbing">
+                                <input class="form-check-input" type="checkbox" value="climbing" name="outdoor_interests[]" id="climbing"
+                                <?php if (!empty($_POST['outdoor_interests']) && in_array("climbing", $_POST['outdoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="climbing">
                                     climbing
                                 </label>
@@ -144,7 +154,8 @@
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="swimming" name="outdoor_interests[]" id="swimming">
+                                <input class="form-check-input" type="checkbox" value="swimming" name="outdoor_interests[]" id="swimming"
+                                <?php if (!empty($_POST['outdoor_interests']) && in_array("swimming", $_POST['outdoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="swimming">
                                     swimming
                                 </label>
@@ -152,7 +163,8 @@
                         </div>
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="collecting" name="outdoor_interests[]" id="collecting">
+                                <input class="form-check-input" type="checkbox" value="collecting" name="outdoor_interests[]" id="collecting"
+                                <?php if (!empty($_POST['outdoor_interests']) && in_array("collecting", $_POST['outdoor_interests'])) echo 'checked'; ?>>
                                 <label class="form-check-label" for="collecting">
                                     collecting
                                 </label>
