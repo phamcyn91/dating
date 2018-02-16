@@ -1,11 +1,21 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: phamcyn
+ * User: phamcyn <Cynthia Pham>
  * Date: 2/15/2018
  * Time: 1:37 PM
  */
 
+/**
+ * Class Member
+ *
+ * The Member represents a member of a dating site
+ *
+ * The Member class represents a Member with a first/last name, age, gender
+ * phone number, email address, state of residence, biography, and interest in gender.
+ * @author Cynthia Phanm <cpham15@mail.greenriver.edu>
+ * @copyright 2018
+ */
 class Member
 {
 
@@ -19,6 +29,16 @@ class Member
     protected $seeking;
     protected $bio;
 
+    /**
+     * Member constructor that takes a first/last name, age,
+     * gender, and phone number.
+     *
+     * @param $fname First name
+     * @param $lname Last name
+     * @param $age Age
+     * @param $gender Gender
+     * @param $phone Phone number
+     */
     function __construct($fname, $lname, $age,
                         $gender, $phone)
     {
@@ -31,7 +51,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns first name
+     *
+     * @return $fname First name
      */
     public function getFname()
     {
@@ -39,7 +61,9 @@ class Member
     }
 
     /**
-     * @param mixed $fname
+     * Sets first name
+     *
+     * @param $fname First name
      */
     public function setFname($fname)
     {
@@ -47,7 +71,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns last name
+     *
+     * @return $lname Last name
      */
     public function getLname()
     {
@@ -55,7 +81,9 @@ class Member
     }
 
     /**
-     * @param mixed $lname
+     * Sets last name
+     *
+     * @param $lname Last name
      */
     public function setLname($lname)
     {
@@ -63,7 +91,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns age
+     *
+     * @return $age Age
      */
     public function getAge()
     {
@@ -71,7 +101,9 @@ class Member
     }
 
     /**
-     * @param mixed $age
+     * Sets age
+     *
+     * @param $age Age
      */
     public function setAge($age)
     {
@@ -79,7 +111,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns gender
+     *
+     * @return $gender Gender
      */
     public function getGender()
     {
@@ -87,7 +121,9 @@ class Member
     }
 
     /**
-     * @param mixed $gender
+     * Sets gender
+     *
+     * @param $gender Gender
      */
     public function setGender($gender)
     {
@@ -95,7 +131,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns phone number
+     *
+     * @return $phone Phone number
      */
     public function getPhone()
     {
@@ -103,7 +141,9 @@ class Member
     }
 
     /**
-     * @param mixed $phone
+     * Sets phone number
+     *
+     * @param $phone Phone number
      */
     public function setPhone($phone)
     {
@@ -111,7 +151,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns email address
+     *
+     * @return $email Email Address
      */
     public function getEmail()
     {
@@ -119,7 +161,9 @@ class Member
     }
 
     /**
-     * @param mixed $email
+     * Sets email address
+     *
+     * @param $email Email Address
      */
     public function setEmail($email)
     {
@@ -127,7 +171,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns the state of residence
+     *
+     * @return $state State of Residence
      */
     public function getState()
     {
@@ -135,7 +181,9 @@ class Member
     }
 
     /**
-     * @param mixed $state
+     * Sets state of residence
+     *
+     * @param $state State of Residence
      */
     public function setState($state)
     {
@@ -143,7 +191,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns the gender of companion
+     *
+     * @return $seeking Gender of seeking companion
      */
     public function getSeeking()
     {
@@ -151,7 +201,9 @@ class Member
     }
 
     /**
-     * @param mixed $seeking
+     * Sets the gender of the companion
+     *
+     * @param $seeking Gender of seeking companion
      */
     public function setSeeking($seeking)
     {
@@ -159,7 +211,9 @@ class Member
     }
 
     /**
-     * @return mixed
+     * Gets and returns biography
+     *
+     * @return $bio Biography
      */
     public function getBio()
     {
@@ -167,7 +221,9 @@ class Member
     }
 
     /**
-     * @param mixed $bio
+     * Sets biography
+     *
+     * @param $bio Biography
      */
     public function setBio($bio)
     {

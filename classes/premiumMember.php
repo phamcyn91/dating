@@ -6,24 +6,54 @@
  * Time: 1:39 PM
  */
 
-class PremiumMember
+/** Class PremiumMember
+ *
+ * The PremiumMember represents a premium member of a dating site.
+ * It extends the Member class.
+ *
+ * The PremiumMember class represents a PremiumMember with indoor and
+ * outdoor interests.  It extends the Member class
+ * @author Cynthia Phanm <cpham15@mail.greenriver.edu>
+ * @copyright 2018
+*/
+class PremiumMember extends Member
 {
     private $_inDoorInterests;
     private $_outDoorInterests;
 
+    /**
+     * Sets the inDoorInterests array
+     *
+     * @param $inDoorInterests Indoor Interests Array
+     */
     function setInDoorInterests($inDoorInterests)
     {
         $this->_inDoorInterests = $inDoorInterests;
     }
 
+    /**
+     * Gets and returns the inDoorInterests Array
+     *
+     * @return $_inDoorInterests Indoor Interests Array
+     */
+    function getIndoorInterests()
+    {
+        return $this->_inDoorInterests;
+    }
+
+    /**
+     * Sets outDoorInterestsArray
+     *
+     * @param $outDoorInterests Outdoor Interests Array
+     */
     function setOutDoorInterests($outDoorInterests)
     {
         $this->_outDoorInterests = $outDoorInterests;
     }
 
-    function getInDoorInterests($inDoorInterests)
+    function getOutDoorInterests()
     {
-        $this->_inDoorInterests = $inDoorInterests;
+        return $this->_outDoorInterests;
     }
 
 }
