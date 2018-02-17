@@ -4,6 +4,8 @@
  * User: phamcyn <Cynthia Pham>
  * Date: 2/15/2018
  * Time: 1:39 PM
+ * premiumMember.php - PremiumMember class that extends Member class. Takes indoorInterests and
+ * outdoorInterests Array
  */
 
 /** Class PremiumMember

@@ -4,6 +4,8 @@
  * User: phamcyn <Cynthia Pham>
  * Date: 2/15/2018
  * Time: 1:37 PM
+ * member.php - Member class that is constructed using first name, last name,
+ * age, gender, phone, email, state, seeking, and bio
  */
 
 /**
