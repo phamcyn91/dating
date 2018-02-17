@@ -31,32 +31,32 @@
             <div class="col-6">
                 <div class="container">
                     <div class="col border">
-                        <p>Name: {{ @firstName }} {{ @lastName }}</p>
+                        <p>Name: {{ @SESSION['member']->getFname() }} {{ @SESSION['member']->getLname() }}</p>
                     </div>
                     <div class="col border">
-                        <p>Gender: {{ @gender }}</p>
+                        <p>Gender: {{ @SESSION['member']->getGender() }}</p>
                     </div>
                     <div class="col border">
-                        <p>Age: {{ @age }}</p>
+                        <p>Age: {{ @SESSION['member']->getAge() }}</p>
                     </div>
                     <div class="col border">
-                        <p>Phone: {{ @phone }}</p>
+                        <p>Phone: {{ @SESSION['member']->getPhone() }}</p>
                     </div>
                     <div class="col border">
-                        <p>Email: {{ @email }}</p>
+                        <p>Email: {{ @SESSION['member']->getEmail() }}</p>
                     </div>
                     <div class="col border">
-                        <p>State: {{ @state }}</p>
+                        <p>State: {{ @SESSION['member']->getState() }}</p>
                     </div>
                     <div class="col border">
-                        <p>Seeking: {{ @seeking }}</p>
+                        <p>Seeking: {{ @SESSION['member']->getSeeking() }}</p>
                     </div>
                     <div class="col border">
                         <p>Interests:
-                            <repeat group="{{ @indoor }}" value ="{{ @interest }}" >
+                            <repeat group="{{ @SESSION['member']->getInDoorInterests() }}" value ="{{ @interest }}" >
                                 {{ @interest }}
                             </repeat>
-                            <repeat group="{{ @outdoor }}" value ="{{ @interest }}" >
+                            <repeat group="{{ @SESSION['member']->getOutDoorInterests() }}" value ="{{ @interest }}" >
                                 {{ @interest }}
                             </repeat>
                         </p>

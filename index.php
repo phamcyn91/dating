@@ -166,8 +166,10 @@
 
                 // set indoor and outdoor interests in member object
                 $member->setOutDoorInterests($outdoor);
-                $member->setIndoorInterests($indoor);
+                $member->setInDoorInterests($indoor);
 
+                $_SESSION['outdoor'] = $outdoor;
+                $_SESSION['indoor'] = $indoor;
 
                 // save member object to session
                 $_SESSION['member'] = $member;
@@ -182,8 +184,6 @@
                 echo Template::instance()->render('views/interests.html');
             }
         } else {
-
-
 
             echo Template::instance()->render('views/interests.html');
 

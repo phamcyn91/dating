@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: phamcyn
+ * User: phamcyn <Cynthia Pham>
  * Date: 2/15/2018
  * Time: 1:39 PM
  */
@@ -36,7 +36,7 @@ class PremiumMember extends Member
      *
      * @return $_inDoorInterests Indoor Interests Array
      */
-    function getIndoorInterests()
+    function getInDoorInterests()
     {
         return $this->_inDoorInterests;
     }
@@ -51,6 +51,11 @@ class PremiumMember extends Member
         $this->_outDoorInterests = $outDoorInterests;
     }
 
+    /**
+     * Gets and returns the outDoorInterests Array
+     *
+     * @return $_outDoorInterests Outdoor Interests Array
+     */
     function getOutDoorInterests()
     {
         return $this->_outDoorInterests;
