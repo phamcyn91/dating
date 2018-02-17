@@ -47,7 +47,8 @@ $interestSuccess = (sizeof($interestErrors) == 0) ? true : false;
  * @param String name
  * @return boolean
  */
-function validName($name) {
+function validName($name)
+{
     if($name != null && ctype_alpha($name)) {
         return true;
     }
@@ -59,7 +60,8 @@ function validName($name) {
  * @param int name
  * @return boolean
  */
-function validAge($age) {
+function validAge($age)
+{
     if(ctype_digit($age) && $age >= 18) {
         return true;
     }
@@ -71,7 +73,8 @@ function validAge($age) {
  * @param int phone
  * @return boolean
  */
-function validPhone($phone) {
+function validPhone($phone)
+{
     if(ctype_digit($phone) && strlen((string)$phone) == 10) {
         return true;
     }
@@ -83,10 +86,22 @@ function validPhone($phone) {
  * @param String interest
  * @return boolean
  */
-function validOutdoor($interest) {
+function validOutdoor($interests)
+{
     global $f3;
 
-    return (in_array($interest, $f3->get('outdoors')));
+
+    foreach ((array)$interests as $interest) {
+        if (!in_array($interest, $f3->get('outdoors'))) {
+            return false;
+        }
+    }
+
+
+
+    return true;
+
+
 }
 
 /*
@@ -94,8 +109,16 @@ function validOutdoor($interest) {
  * @param String interest
  * @return boolean
  */
-function validIndoor($interest) {
+function validIndoor($interests)
+{
     global $f3;
 
-    return (in_array($interest, $f3->get('indoors')));
+    foreach ((array)$interests as $interest) {
+        if (!in_array($interest, $f3->get('indoors'))) {
+            return false;
+        }
+    }
+
+    return true;
+
 }
