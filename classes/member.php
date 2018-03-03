@@ -105,11 +105,23 @@ class Member
     /**
      * Sets age
      *
+     * Validates to see if age is no more than 2 digits and does not start with 0.
+     * If it not true, it sets $age value to 18.
+     *
      * @param $age Age
      */
     public function setAge($age)
     {
-        $this->age = $age;
+        $regexp = '/^[1-9]\d{1}$/';
+
+        if (preg_match($regexp, $age))
+        {
+            $this->age = $age;
+        } else
+        {
+            $this->age = 18;
+        }
+
     }
 
     /**
@@ -163,13 +175,26 @@ class Member
     }
 
     /**
-     * Sets email address
+     * Sets email address (case-insensitive)
+     *
+     * Validates to see if email starts with a letter and then any digits or letters repeated 0 or more times.
+     * Has @ character then any word group followed by . character between one or two times.  Must end in edu
+     * or com.  If it doesn't match, it replaces $email value with none@none.com.
      *
      * @param $email Email Address
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $regexp = '/^[a-z][a-z0-9]*@\w+\.(\w*.)?(com|edu)$/i';
+
+        if (preg_match($regexp, $email))
+        {
+            $this->email = $email;
+        } else
+        {
+            $this->email = "none@none.com";
+        }
+
     }
 
     /**
@@ -183,13 +208,25 @@ class Member
     }
 
     /**
-     * Sets state of residence
+     * Sets state of residence (case-insensitive)
+     *
+     * Only contains words or space.  Doesn't contain more than 14 characters (including space) since
+     * longest word length is 14 (North Carolina).
+     * If it doesn't validate, it sets $state value to N/A.
      *
      * @param $state State of Residence
      */
     public function setState($state)
     {
-        $this->state = $state;
+        $regexp = '/^\D{2,14}$/i';
+
+        if (preg_match($regexp, $state))
+        {
+            $this->state = $state;
+        } else
+        {
+            $this->state = "N/A";
+        }
     }
 
     /**
