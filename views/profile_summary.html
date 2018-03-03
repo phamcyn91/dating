@@ -24,6 +24,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light border">
         <a class="navbar-brand text-secondary" href="http://cpham.greenriverdev.com/328/dating">My Dating Website</a>
+        <a class="navbar-brand text-secondary" href="http://cpham.greenriverdev.com/328/dating/admin">Admin</a>
     </nav>
 
     <div class="container border rounded box">
@@ -51,16 +52,19 @@
                     <div class="col border">
                         <p>Seeking: {{ @SESSION['member']->getSeeking() }}</p>
                     </div>
-                    <div class="col border">
-                        <p>Interests:
-                            <repeat group="{{ @SESSION['member']->getInDoorInterests() }}" value ="{{ @interest }}" >
-                                {{ @interest }}
-                            </repeat>
-                            <repeat group="{{ @SESSION['member']->getOutDoorInterests() }}" value ="{{ @interest }}" >
-                                {{ @interest }}
-                            </repeat>
-                        </p>
-                    </div>
+                    <check if="{{ @SESSION['member'] instanceof PremiumMember }}">
+                        <div class="col border">
+                            <p>Interests:
+                                <repeat group="{{ @SESSION['member']->getInDoorInterests() }}" value ="{{ @interest }}" >
+                                    {{ @interest }}
+                                </repeat>
+                                <repeat group="{{ @SESSION['member']->getOutDoorInterests() }}" value ="{{ @interest }}" >
+                                    {{ @interest }}
+                                </repeat>
+                            </p>
+                        </div>
+                    </check>
+
                 </div>
             </div>
             <div class="col-6">
@@ -79,8 +83,8 @@
         <br>
         <div class="row">
             <div class="col text-center">
-                <form action="#" method="post">
-                    <input class="btn btn-primary btn-lg" type="submit" value="Create a Profile!">
+                <form action="./summary" method="post">
+                    <input class="btn btn-primary btn-lg" type="submit" name="submit" value="Create a Profile!">
                 </form>
             </div>
         </div>
