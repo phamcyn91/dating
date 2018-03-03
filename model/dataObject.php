@@ -4,6 +4,8 @@
  * User: phamcyn
  * Date: 2/28/2018
  * Time: 4:30 PM
+ * dataObject class - class that defines functions to connect, get all members, get member, and add member
+ * to members database table
  */
 
 /* CREATE TABLE members (
@@ -29,7 +31,8 @@
      * Connects to Database cphamgre_grc
      *
      * Connects to Database cphamgre_grc using username and password from
-     * config.php.  Creates new database object
+     * config.php.  Creates new database object that can be used to add and get members to and from
+     * member database table.
      *
      * @return PDO|void
      */
