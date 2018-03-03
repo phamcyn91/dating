@@ -33,42 +33,35 @@
      *
      * @return PDO|void
      */
-    abstract class DataObject {
+     class DataObject {
 
+        protected $dbh;
 
-        protected $data = array();
+        /**
+         * DataObject constructor.
+         *
+         * DataObject constructor instantiates a database object by using the credentials defined in
+         * /home/cphamgre/config.php
+         */
+        public function __construct() {
 
-        public function __construct($data) {
-            foreach ($data as $key => $value) {
-                if (array_key_exists($key, $this->data))
-                    $this->data[$key] = $value;
-            }
-        }
-
-        public function getValue($field) {
-            if (array_key_exists($field, $this->data)) {
-                return $this->data[$field];
-            } else {
-                die ("Field not found");
-            }
-        }
-
-        protected function connect()
-        {
             try {
                 //Instantiate a database object
-                $dbh = new PDO(DB_DSN, DB_USERNAME,
+                $this->dbh = new PDO(DB_DSN, DB_USERNAME,
                     DB_PASSWORD );
-                return $dbh;
+                //return $dbh;
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
                 return;
             }
+
         }
 
-        protected function disconnect($dbh) {
-            $dbh = "";
+
+        protected function disconnect() {
+            //$dbh = "";
+            $this->dbh = "";
         }
 
 
@@ -91,21 +84,21 @@
          * @param $image Image path of member's profile pic
          * @param $interests Member's interests
          */
-        public function addMember($firstName, $lastName, $age, $gender, $phone, $email,
+        public function addMember($fname, $lname, $age, $gender, $phone, $email,
                            $state, $seeking, $bio, $premium, $image, $interests) {
 
-            global $dbh;
+            //global $dbh;
 
             //Define query
-            $sql = "INSERT INTO members (firstName, lastName, age, gender, phone, email, state, 
-          seeking, bio, premium, image, interests) VALUES (:firstName, :lastName, :age, :gender, 
-          :phone, :gender, :phone, :email, :state, :seeking, :bio, :premium, :image, :interests)";
+            $sql = "INSERT INTO members (fname, lname, age, gender, phone, email, state, 
+          seeking, bio, premium, image, interests) VALUES (:fname, :lname, :age, :gender, 
+          :phone, :email, :state, :seeking, :bio, :premium, :image, :interests)";
 
             //prepare the statement
-            $statement = $dbh->prepare($sql);
+            $statement = $this->dbh->prepare($sql);
 
-            $statement->bindParam(':firstName',$firstName, PDO::PARAM_STR);
-            $statement->bindParam(':lastName',$lastName, PDO::PARAM_STR);
+            $statement->bindParam(':fname',$fname, PDO::PARAM_STR);
+            $statement->bindParam(':lname',$lname, PDO::PARAM_STR);
             $statement->bindParam(':age',$age, PDO::PARAM_INT);
             $statement->bindParam(':gender',$gender, PDO::PARAM_STR);
             $statement->bindParam(':phone',$phone, PDO::PARAM_INT);
@@ -115,7 +108,7 @@
             $statement->bindParam(':bio',$bio,PDO::PARAM_STR);
             $statement->bindParam(':premium',$premium, PDO::PARAM_BOOL);
             $statement->bindParam(':image',$image, PDO::PARAM_STR);
-            $statement->bindParam(':interests',$premium, PDO::PARAM_STR);
+            $statement->bindParam(':interests',$interests, PDO::PARAM_STR);
 
             //Execute
             $statement->execute();
@@ -131,12 +124,12 @@
          */
         public function getMembers() {
 
-            global $dbh;
+            //global $dbh;
 
             $sql = "SELECT * FROM members ORDER BY lname, fname";
 
             //2. Prepare the statement
-            $statement = $dbh->prepare($sql);
+            $statement = $this->dbh->prepare($sql);
 
             //4. Execute the query
             $statement->execute();
@@ -145,6 +138,59 @@
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             return $result;
+        }
+
+        /**
+         * Returns member by specific member id
+         *
+         * Selects member from Members table by member_id.  Returns a Member class
+         * object.
+         *
+         * @param $member_id member id (Primary key of members table)
+         * @return Member|PremiumMember Member or PremiumMember class object
+         */
+        public function getMember($member_id) {
+
+            //global $dbh;
+
+            //1. Define the query
+            $sql = "SELECT * FROM members WHERE member_id = :member_id";
+
+            //2. Prepare the statement
+            $statement = $this->dbh->prepare($sql);
+
+            //3. Bind parameters
+            $statement->bindParam(':member_id', $member_id, PDO::PARAM_INT);
+
+            //4. Execute the query
+            $statement->execute();
+
+            //5. Get the results
+            $member = $statement->fetch(PDO::FETCH_ASSOC);
+
+            //create new Member/Premium class object
+            if ($member instanceof PremiumMember) //premium member object
+            {
+                $member1 = new PremiumMember($member[fname], $member[lname], $member[age],
+                    $member[gender], $member[phone]);
+
+                $member1->setInDoorInterests($member[interests]);
+
+
+            } else //member object
+            {
+                $member1 = new Member($member[fname], $member[lname], $member[age],
+                    $member[gender], $member[phone]);
+            }
+
+            //set Member object values
+            $member1->setBio($member[bio]);
+            $member1->setSeeking($member[seeking]);
+            $member1->setState($member[state]);
+            $member1->setEmail($member[email]);
+
+            //6. Return student
+            return $member1;
         }
 
     }
