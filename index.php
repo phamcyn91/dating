@@ -21,6 +21,9 @@
     //Set debug level (0-3)
     $f3->set('DEBUG', 3);
 
+    //Create new DataBase Object
+    $dbh = new DataObject();
+
     //Set indoor interests array
     $f3->set('indoors', array('tv', 'puzzles', 'movies', 'reading', 'cooking', 'playing cards', 'board games', 'video games'));
 
@@ -33,6 +36,7 @@
 
         session_destroy();
         session_start();
+
 
         $view = new View();
         echo $view->render
@@ -61,7 +65,7 @@
             $f3->set('premium', $_POST['premium']);
 
             // validation
-            include('model/validate.php');
+            require_once('model/validate.php');
 
             if ($profileSuccess) {
 
@@ -74,6 +78,8 @@
                     $member = new Member($firstName, $lastName,
                         $age, $_POST['gender'], $phone);
                 }
+
+                $member->setAge($age);
 
                 // save member object to the session
                 $_SESSION['member'] = $member;
@@ -156,9 +162,9 @@
             $outdoor = $_POST['outdoor_interests'];
             $indoor = $_POST['indoor_interests'];
 
-            include('model/validate.php');
-
             // validation
+            require_once('model/validate.php');
+
             if ($interestSuccess) {
 
                 // get member object from session
@@ -192,11 +198,58 @@
     );
 
     //Defined route to pages/profile_summary.html
-    $f3->route('GET|POST /summary', function() {
+    $f3->route('GET|POST /summary', function($f3) {
 
+        global $dbh;
+
+        // get member object from session
+        $member = $_SESSION['member'];
+
+
+        if(isset($_POST['submit']))
+        {
+
+            $interests = null;
+            $image = null;
+            $premium = false;
+
+            if($member instanceof PremiumMember)
+            {
+                if (!empty($member->getOutDoorInterests())) {
+                    $interests = implode(", ", $member->getOutDoorInterests());
+                }
+                if (!empty($member->getInDoorInterests())) {
+                    $interests = $interests .  ", "  .  implode(", ", $member->getInDoorInterests());
+                }
+
+                $premium = true;
+            }
+
+            //Insert the project into the DB
+            $dbh->addMember($member->getFname(), $member->getLname(), $member->getAge(), $member->getGender(),
+                $member->getPhone(), $member->getEmail(), $member->getState(), $member->getSeeking(),
+                $member->getBio(), $premium, $image, $interests);
+
+            $f3->reroute('./');
+
+        }
 
         //load a template
         echo Template::instance()->render('views/profile_summary.html');
+    }
+    );
+
+    //Defined route to pages/admin.html
+    $f3->route('GET|POST /admin', function($f3) {
+
+        global $dbh;
+
+        $members = $dbh->getMembers();
+
+        $f3->set('members', $members);
+
+        //load a template
+        echo Template::instance()->render('views/admin.html');
     }
     );
 
